@@ -11,8 +11,6 @@ if [ ! -d "ccm26ToFoam" ]; then
   sed -i -e 's=FOAM_APPBIN=FOAM_USER_APPBIN=' ccm26ToFoam/Make/files
   sed -i -e 's|^LIBCCMIO_DIR.*|LIBCCMIO_DIR = $(realpath ../libccmio-2.6.1)|' ccm26ToFoam/Make/options
   sed -i -e 's=FOAM_EXT_LIBBIN=FOAM_USER_LIBBIN=' ccm26ToFoam/Make/options
-  wget -O "ccm26ToFoam/ccm26ToFoam.C" \
-  "https://raw.github.com/OpenFOAM/OpenFOAM-2.2.x/f5bc1812790674c3f30dcb7d158af7a51d41fc4b/applications/utilities/mesh/conversion/Optional/ccm26ToFoam/ccm26ToFoam.C"
   
   mkdir download
 
