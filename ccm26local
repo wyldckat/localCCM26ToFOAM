@@ -1,16 +1,38 @@
-#!/bin/sh
+#!/bin/bash
 
 baseFolder=$PWD
 
-mkdir -p $WM_PROJECT_USER_DIR
-cd $WM_PROJECT_USER_DIR
-cp -r $FOAM_APP/utilities/mesh/conversion/Optional .
-cd Optional
-cp -r ${baseFolder}/* .
+if [ ! -d "ccm26ToFoam" ]; then
 
-sed -i -e 's=cd $WM_THIRD_PARTY_DIR && ==' -e 's=FOAM_LIBBIN=FOAM_USER_LIBBIN=' Allwmake
-sed -i -e 's=FOAM_APPBIN=FOAM_USER_APPBIN=' ccm26ToFoam/Make/files
-sed -i -e 's=${WM_THIRD_PARTY_DIR}=${WM_PROJECT_USER_DIR}/Optional=' ccm26ToFoam/Make/options
-sed -i -e 's=-lccmio=-L${FOAM_USER_LIBBIN} -lccmio=' ccm26ToFoam/Make/options
+  echo "Preparing folder ccm26ToFoam..."
 
-./Allwmake | tee build.log 2>&1
+  cp -r $FOAM_APP/utilities/mesh/conversion/Optional/ccm26ToFoam .
+
+  sed -i -e 's=FOAM_APPBIN=FOAM_USER_APPBIN=' ccm26ToFoam/Make/files
+  sed -i -e 's|^LIBCCMIO_DIR.*|LIBCCMIO_DIR = $(realpath ../libccmio-2.6.1)|' ccm26ToFoam/Make/options
+  sed -i -e 's=FOAM_EXT_LIBBIN=FOAM_USER_LIBBIN=' ccm26ToFoam/Make/options
+
+  mkdir download
+
+fi
+
+cat<<USAGE
+* The license of the libccmio library is proprietary:
+
+    Users wishing to make use of its functionality should contact CD-Adapco
+    for possible download and terms of use.
+
+Have you contacted CD-Adapco and received the libccmio package?
+
+  - If you have, then press Enter to continue. It will download the package available at the VisIt project.
+
+  - If you have not, then press the key combination Ctrl+C to abort.
+USAGE
+read a
+
+(
+  ./AllwmakeLibccmio DownloadFromVisIt && \
+  wmake ccm26ToFoam
+) | tee build.log 2>&1
+
+echo "The output above has been logged inside the file 'build.log'."
