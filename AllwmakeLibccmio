@@ -1,0 +1,69 @@
+#!/bin/sh
+#------------------------------------------------------------------------------
+# =========                 |
+# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+#  \\    /   O peration     |
+#   \\  /    A nd           | Copyright (C) 1991-2010 OpenCFD Ltd.
+#    \\/     M anipulation  |
+#------------------------------------------------------------------------------
+# License
+#     This file is part of OpenFOAM.
+#
+#     OpenFOAM is free software: you can redistribute it and/or modify it
+#     under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+#
+#     OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
+#     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+#     FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+#     for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Script
+#     AllwmakeLibccmio
+#
+# Description
+#     Get and build CD-adapco's ccmio library
+#
+#------------------------------------------------------------------------------
+packageDir=libccmio-2.6.1
+tarFile=$packageDir.tar.gz
+url="https://wci.llnl.gov/codes/visit/3rd_party/$tarFile"
+
+#------------------------------------------------------------------------------
+# run from third-party directory only
+cd ${0%/*} || exit 1
+. tools/makeThirdPartyFunctions
+#------------------------------------------------------------------------------
+
+
+# get tar.gz file if required
+if [ ! -d ${packageDir} ]
+then
+    downloadFile $tarFile $url
+
+    if [ -e download/$tarFile ]
+    then
+        echo "unpack download/$tarFile"
+        tar -xzf download/$tarFile
+    else
+        echo "no download/$tarFile to unpack"
+    fi
+fi
+
+set -x
+
+# make libccmio
+(
+    cd $packageDir || exit 1
+    mkdir Make
+    cp -n ../wmakeFiles/libccmio/* Make/
+
+    wmake libso
+)
+
+
+# ----------------------------------------------------------------- end-of-file
