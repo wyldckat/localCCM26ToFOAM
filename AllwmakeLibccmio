@@ -1,5 +1,11 @@
 #!/bin/sh
 #------------------------------------------------------------------------------
+# =========                 |
+# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+#  \\    /   O peration     |
+#   \\  /    A nd           | Copyright (C) 2011 OpenFOAM Foundation
+#    \\/     M anipulation  |
+#------------------------------------------------------------------------------
 # License
 #     This file is adapted from OpenFOAM's original AllwmakeLibccmio scripts.
 #
