@@ -6,6 +6,8 @@ This is an adaptation of <tt>ccm26ToFoam</tt> from the original [http://www.open
 
 Keep in mind that the source code in this repository is provided under the GPLv3 license, for which more details are provided in the <tt>COPYING</tt> file. The license of the <tt>libccmio</tt> library is proprietary:     Users wishing to make use of its functionality should contact [http://www.cd-adapco.com/ CD-adapco] for possible download and terms of use. Nonetheless, the scripts made available by this [https://github.com/wyldckat/localCCM26ToFOAM git repository] will download the compatible libccmio 2.6.1 version from the VisIt public repositories.
 
+Support for this repository is provided here: [http://www.cfd-online.com/Forums/openfoam/73356-star-ccm-mesh-o-f.html star-ccm mesh to O\/F]
+
 Most of the original sources used in this [https://github.com/wyldckat/localCCM26ToFOAM repository], have been retrieved from:
 * [https://github.com/OpenCFD/OpenFOAM-1.7.x]
 * [https://github.com/OpenFOAM/OpenFOAM-2.0.x]
