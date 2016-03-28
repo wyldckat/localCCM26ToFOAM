@@ -32,7 +32,8 @@ read a
 
 (
   ./AllwmakeLibccmio DownloadFromVisIt && \
-  wmake ccm26ToFoam
+  wmake ccm26ToFoam && wmake ccm26ToFoam
 ) | tee build.log 2>&1
 
+echo ""
 echo "The output above has been logged inside the file 'build.log'."
