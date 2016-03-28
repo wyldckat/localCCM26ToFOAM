@@ -61,7 +61,7 @@ On the other hand, if are using OpenFOAM 2.4, then you can simply use the <tt>of
 </li>
 
 <li>Now you can launch the build process:
-<pre>./Allwmake</pre>
+<pre>./ccm26local</pre>
 It will do everything pretty much autonomous, although midway it asks for you to read the details and then press the ''Enter'' keyboard key. It will then download the <tt>libccmio</tt> library source code from VisIt repository.
 </li>
 
@@ -168,7 +168,7 @@ Then go into the newly unpacked folder:
 </li>
 
 <li>Now you can launch the build process:
-<pre>./Allwmake</pre>
+<pre>./ccm26local</pre>
 It will do everything pretty much autonomous, although midway it asks for you to read the details and then press the ''Enter'' keyboard key. It will then download the <tt>libccmio</tt> library source code from VisIt repository.
 </li>
 
