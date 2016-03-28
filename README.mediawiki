@@ -9,7 +9,6 @@ Keep in mind that the source code in this repository is provided under the GPLv3
 Support for this repository is provided here: [http://www.cfd-online.com/Forums/openfoam/73356-star-ccm-mesh-o-f.html star-ccm mesh to O\/F]
 
 Most of the original sources used in this [https://github.com/wyldckat/localCCM26ToFOAM repository], have been retrieved from:
-* [https://github.com/OpenCFD/OpenFOAM-1.7.x]
 * [https://github.com/OpenFOAM/OpenFOAM-2.0.x]
 * [https://github.com/OpenFOAM/OpenFOAM-2.1.x]
 * [https://github.com/OpenFOAM/OpenFOAM-2.2.x]
@@ -47,7 +46,6 @@ cd localCCM26ToFOAM</pre>
 You should see something like this:
 <pre>* master
   remotes/origin/master
-  remotes/origin/of17
   remotes/origin/of20
   remotes/origin/of21
   remotes/origin/of22
@@ -92,19 +90,6 @@ cd $WM_PROJECT_USER_DIR</pre>
 
 <li>Now, depending on the version of OpenFOAM you've got, download the respective package you need.
 <ul>
-<li>For OpenFOAM 1.7.0, 1.7.1 and 1.7.x, run either one of the following group of lines:
-<pre># If you want to download in zip format
-wget "https://github.com/wyldckat/localCCM26ToFOAM/archive/of17.zip"
-unzip of17
-
-# If you want to download in tar format
-wget "https://github.com/wyldckat/localCCM26ToFOAM/archive/of17.tar.gz"
-tar -xf of17.tar.gz</pre>
-
-Then go into the newly unpacked folder:
-<pre>cd localCCM26ToFOAM-of17</pre>
-</li>
-
 <li>For OpenFOAM 2.0.0, 2.0.1 and 2.0.x, run either one of the following group of lines:
 <pre># If you want to download in zip format
 wget "https://github.com/wyldckat/localCCM26ToFOAM/archive/of20.zip"
