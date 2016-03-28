@@ -24,26 +24,17 @@ cat<<USAGE
     Users wishing to make use of its functionality should contact CD-Adapco
     for possible download and terms of use.
 
-Have you contacted CD-Adapco and received the libccmio package? (yes/no): 
+Have you contacted CD-Adapco and received the libccmio package?
+
+  - If you have, then press Enter to continue. It will download the package available at the VisIt project.
+
+  - If you have not, then press the key combination Ctrl+C to abort.
 USAGE
-read theAnswer
+read a
 
-if [ "$theAnswer" = "yes" ]; then
-  
-  (
-    ./AllwmakeLibccmio DownloadFromVisIt && \
-    wmake ccm26ToFoam
-  ) | tee build.log 2>&1
+(
+  ./AllwmakeLibccmio DownloadFromVisIt && \
+  wmake ccm26ToFoam
+) | tee build.log 2>&1
 
-else
-  
-  cat<<FINALMESSAGE
-Once you've contacted CD-Adapco and you have received the libccmio package, 
-place the package in this folder:
-
-    $PWD/download/
-
-And run this script once again.
-FINALMESSAGE
-
-fi
+echo "The output above has been logged inside the file 'build.log'."
