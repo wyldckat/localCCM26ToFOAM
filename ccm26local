@@ -6,10 +6,11 @@ mkdir -p $WM_PROJECT_USER_DIR
 cd $WM_PROJECT_USER_DIR
 cp -r $FOAM_APP/utilities/mesh/conversion/Optional .
 cd Optional
+cp -r ${baseFolder}/* .
+
 sed -i -e 's=cd $WM_THIRD_PARTY_DIR && ==' -e 's=FOAM_LIBBIN=FOAM_USER_LIBBIN=' Allwmake
 sed -i -e 's=FOAM_APPBIN=FOAM_USER_APPBIN=' ccm26ToFoam/Make/files
 sed -i -e 's=${WM_THIRD_PARTY_DIR}=${WM_PROJECT_USER_DIR}/Optional=' ccm26ToFoam/Make/options
 sed -i -e 's=-lccmio=-L${FOAM_USER_LIBBIN} -lccmio=' ccm26ToFoam/Make/options
 
-tar -xzf "${baseFolder}/ccmio_maker.tar.gz"
 ./Allwmake | tee build.log 2>&1

@@ -31,7 +31,7 @@
 #------------------------------------------------------------------------------
 packageDir=libccmio-2.6.1
 tarFile=$packageDir.tar.gz
-url="https://wci.llnl.gov/codes/visit/3rd_party/$tarFile"
+url="//portal.nersc.gov/svn/visit/tags/2.4.2/third_party/$tarFile"
 
 #------------------------------------------------------------------------------
 # run from third-party directory only
