@@ -67,12 +67,16 @@ On the other hand, if are using OpenFOAM 2.4, then you can simply use the <tt>of
 It will do everything pretty much autonomous, although midway it asks for you to read the details and then press the ''Enter'' keyboard key. It will then download the <tt>libccmio</tt> library source code from VisIt repository.
 </li>
 
-<li>It should end with a line similar to this one:
-<pre>-llagrangian -lfiniteVolume -lgenericPatchFields -lmeshTools -L/home/user/OpenFOAM/user-2.1.0/platforms/linux64GccDPOpt/lib -lccmio -lOpenFOAM -ldl   -lm -o /home/user/OpenFOAM/user-2.1.0/platforms/linux64GccDPOpt/bin/ccm26ToFoam</pre>
+<li>It should end with the last lines similar to these:
+<pre>make: '/home/ofuser/OpenFOAM/ofuser-2.0.x/platforms/linux64GccDPOpt/bin/ccm26ToFoam' is up to date.
+
+The output above has been logged inside the file 'build.log'.
+</pre>
 </li>
 
 <li>If all went well, you can now learn how ot use this conversor by running the following command:
 <pre>ccm26ToFoam -help</pre>
+Or visit the following wiki page: [http://openfoamwiki.net/index.php/Ccm26ToFoam ccm26ToFoam at openfoamwiki.net]
 </li>
 </ol>
 
@@ -174,11 +178,15 @@ Then go into the newly unpacked folder:
 It will do everything pretty much autonomous, although midway it asks for you to read the details and then press the ''Enter'' keyboard key. It will then download the <tt>libccmio</tt> library source code from VisIt repository.
 </li>
 
-<li>It should end with a line similar to this one:
-<pre>-llagrangian -lfiniteVolume -lgenericPatchFields -lmeshTools -L/home/user/OpenFOAM/user-2.1.0/platforms/linux64GccDPOpt/lib -lccmio -lOpenFOAM -ldl   -lm -o /home/user/OpenFOAM/user-2.1.0/platforms/linux64GccDPOpt/bin/ccm26ToFoam</pre>
+<li>It should end with the last lines similar to these:
+<pre>make: '/home/ofuser/OpenFOAM/ofuser-2.0.x/platforms/linux64GccDPOpt/bin/ccm26ToFoam' is up to date.
+
+The output above has been logged inside the file 'build.log'.
+</pre>
 </li>
 
 <li>If all went well, you can now learn how ot use this conversor by running the following command:
 <pre>ccm26ToFoam -help</pre>
+Or visit the following wiki page: [http://openfoamwiki.net/index.php/Ccm26ToFoam ccm26ToFoam at openfoamwiki.net]
 </li>
 </ol>
