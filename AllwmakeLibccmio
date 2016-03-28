@@ -1,0 +1,97 @@
+#!/bin/sh
+#------------------------------------------------------------------------------
+# License
+#     This file is adapted from OpenFOAM's original AllwmakeLibccmio scripts.
+#
+#     OpenFOAM is free software: you can redistribute it and/or modify it
+#     under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+#
+#     OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
+#     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+#     FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+#     for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Script
+#     AllwmakeLibccmio
+#
+# Description
+#     Get and build CD-adapco's ccmio library
+#
+#------------------------------------------------------------------------------
+packageDir=libccmio-2.6.1
+tarFile=$packageDir.tar.gz
+url="http://portal.nersc.gov/svn/visit/trunk/third_party/$tarFile"
+
+#------------------------------------------------------------------------------
+# run from third-party directory only
+cd ${0%/*} || exit 1
+. tools/makeThirdPartyFunctions
+#------------------------------------------------------------------------------
+
+usage()
+{
+    cat<<USAGE
+
+* The license of the libccmio library is proprietary:
+
+    Users wishing to make use of its functionality should contact CD-Adapco
+    for possible download and terms of use.
+
+
+Usage: ${0##*/}
+
+* This script will install the libccmio library
+* After obtaining the $packageDir library, place in folder
+
+    ${0%/*}
+
+If the version that has been provided to you of libccmio is not 2.6.1, 
+then run:
+
+    ${0##*/} DownloadFromVisIt
+
+USAGE
+    exit 1
+}
+
+
+# get tar.gz file if required
+if [ "$1" = "DownloadFromVisIt" ]
+then
+
+    echo "Downloading from VisIt's third party online folder:"
+    downloadFile $tarFile $url
+
+    if [ -e download/$tarFile ]
+    then
+        echo "unpack download/$tarFile"
+        tar -xzf download/$tarFile
+    else
+        echo "no download/$tarFile to unpack"
+    fi
+  
+elif [ ! -d ${packageDir} ]
+then
+
+    usage
+
+fi
+
+set -x
+
+# make libccmio
+(
+    cd $packageDir || exit 1
+    mkdir Make
+    cp -n ../wmakeFiles/libccmio/* Make/
+
+    wmake libso
+)
+
+
+# ----------------------------------------------------------------- end-of-file
