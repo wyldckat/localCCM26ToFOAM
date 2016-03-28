@@ -25,7 +25,7 @@
 #------------------------------------------------------------------------------
 packageDir=libccmio-2.6.1
 tarFile=$packageDir.tar.gz
-url="http://portal.nersc.gov/svn/visit/trunk/third_party/$tarFile"
+url="http://visit.ilight.com/svn/visit/trunk/third_party/$tarFile"
 
 #------------------------------------------------------------------------------
 # run from third-party directory only
