@@ -9,9 +9,9 @@ if [ ! -d "ccm26ToFoam" ]; then
   cp -r $FOAM_APP/utilities/mesh/conversion/Optional/ccm26ToFoam .
 
   sed -i -e 's=FOAM_APPBIN=FOAM_USER_APPBIN=' ccm26ToFoam/Make/files
-  sed -i -e 's|^LIBCCMIO_DIR.*|LIBCCMIO_DIR = $(realpath ../libccmio-2.6.1)|' ccm26ToFoam/Make/options
+  sed -i -e 's|^.*CCMIO_ARCH_PATH.*|-I$(realpath ../libccmio-2.6.1) -I$(realpath ../libccmio-2.6.1)/lnInclude|' ccm26ToFoam/Make/options
   sed -i -e 's=FOAM_EXT_LIBBIN=FOAM_USER_LIBBIN=' ccm26ToFoam/Make/options
-  
+
   mkdir download
 
 fi
@@ -33,7 +33,7 @@ read a
 (
   ./AllwmakeLibccmio DownloadFromVisIt && \
   wmake ccm26ToFoam && wmake ccm26ToFoam
-) | tee build.log 2>&1
+) 2>&1 | tee build.log
 
 echo ""
 echo "The output above has been logged inside the file 'build.log'."
