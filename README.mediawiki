@@ -35,7 +35,7 @@ There are two ways of downloading and installing this code:
 Run the following instructions as normal user:
 <ol>
 <li>
-Assuming you have <tt>git</tt> already installed and a working OpenFOAM installation, run:
+Assuming you have <tt>git</tt> already installed and a working OpenFOAM or OpenFOAM+ installation, run:
 <pre>mkdir -p $WM_PROJECT_USER_DIR
 cd $WM_PROJECT_USER_DIR
 git clone git://github.com/wyldckat/localCCM26ToFOAM.git
@@ -53,6 +53,7 @@ You should see something like this:
   remotes/origin/of23
   remotes/origin/of30
   remotes/origin/of4
+  remotes/origin/of+v1606+
 </pre>
 The ones that start with <tt>of</tt> indicate for which versions of OpenFOAM this repository is currently working.
 </li>
@@ -168,6 +169,19 @@ tar -xf of4.tar.gz</pre>
 
 Then go into the newly unpacked folder:
 <pre>cd localCCM26ToFOAM-of4</pre>
+</li>
+
+<li>For OpenFOAM+ v1606+, run either one of the following group of lines:
+<pre># If you want to download in zip format
+wget "https://github.com/wyldckat/localCCM26ToFOAM/archive/of+v1606+.zip"
+unzip of+v1606+
+
+# If you want to download in tar format
+wget "https://github.com/wyldckat/localCCM26ToFOAM/archive/of+v1606+.tar.gz"
+tar -xf of+v1606+.tar.gz</pre>
+
+Then go into the newly unpacked folder:
+<pre>cd localCCM26ToFOAM-of-v1606-</pre>
 </li>
 
 </ul>
